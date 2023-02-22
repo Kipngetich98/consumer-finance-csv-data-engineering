@@ -1,12 +1,3 @@
 # consumer-finance-csv-data-engineering
 
-docker run -it \
-    -e POSTGRES_USER="postgres" \
-    -e POSTGRES_PASSWORD="1234" \
-    -e POSTGRES_DB="consumer_data" \
-    -v $(pwd)/consumer_data_postgres_data:/var/lib/postgresql/data \
-    -p 5435:5432 \
-    postgres:13
-
-
-pgcli -h localhost -p 5435 -u postgres -d consumer_data
+This projects runs on docker, reads a csv file , generate a schema by converting the dataframe (the dataset is too big and its read in chunks of 100000) into a DDl, put the schema into postgres database, convert the dataframe to sql to facilate inserting into postgres and finally insert the data into database table. From his point SQL commands can be used to read, read and alter the data in postgres.
